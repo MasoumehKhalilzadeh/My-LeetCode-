@@ -4,17 +4,17 @@ This folder contains documentation related to the LeetCode Challenges
 
 ## Contents
 
-- [Running Sum of 1D Array](file1.md): Description of File1.
-- [Richest Customer Wealth](file2.md): Description of File2.
-- [Fizz Buzz](file3.md): Description of File3.
-- [Middle of The Linked List](file3.md): Description of File3.
-- [Ransom Note](file3.md): Description of File3.
+- [Running Sum of 1D Array](#running-sum-of-1d-array)
+- [Richest Customer Wealth](#richest-customer-wealth)
+- [Fizz Buzz](#fizz-buzz)
+- [Middle of The Linked List](#middle-of-the-linked-list)
+- [Ransom Note](#ransom-note)
 
 
 
 
 
-**Running Sum of 1D Array**
+## Running Sum of 1D Array
 
 Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
 
@@ -36,7 +36,7 @@ Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
 
 
 ------------------------------
-Richest Customer Wealth
+## Richest Customer Wealth
 
 
 You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
@@ -66,7 +66,7 @@ Both customers are considered the richest with a wealth of 6 each, so return 6.
 -----------------------------------
 
 
-Fizz Buzz
+## Fizz Buzz
 
 Given an integer n, return a string array answer (1-indexed) where:
 
@@ -103,7 +103,7 @@ Input: n = 3
 Output: ["1","2","Fizz"]
 
 -----------------------------------------------
-Middle of The Linked List
+## Middle of The Linked List
 
 Given the head of a singly linked list, return the middle node of the linked list.
 
@@ -136,7 +136,7 @@ Explanation: The middle node of the list is node 3.
 -------------------------------------------------
 
 
-Ransom Note
+## Ransom Note
 
 
 Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
