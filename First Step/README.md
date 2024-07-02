@@ -20,15 +20,15 @@ Given an array nums. We define a running sum of an array as runningSum[i] = sum(
 
 Return the running sum of nums.
 
-
+```python
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
         for i in range(1,len(nums)):
             nums[i] = nums[i-1]+nums[i]
         return nums
+```
 
-
-Example 1:
+### Example:
 
 Input: nums = [1,2,3,4]
 Output: [1,3,6,10]
@@ -43,7 +43,7 @@ You are given an m x n integer grid accounts where accounts[i][j] is the amount 
 
 A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.''
 
-
+```python
 class Solution:
     def maximumWealth(self, accounts: List[List[int]]) -> int:
         max_wealth = 0
@@ -51,9 +51,9 @@ class Solution:
             total_wealth = sum(accounts[i])
             max_wealth = max(max_wealth, total_wealth)
         return max_wealth
+```
 
-
-Example 1:
+### Example:
 
 Input: accounts = [[1,2,3],[3,2,1]]
 Output: 6
@@ -74,7 +74,8 @@ answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
 answer[i] == "Fizz" if i is divisible by 3.
 answer[i] == "Buzz" if i is divisible by 5.
 answer[i] == i (as a string) if none of the above conditions are true.
- 
+
+ ```python
 class Solution:
     def fizzBuzz(self, n: int) -> List[str]:
         answer = [] # Initialize an empty list to store the results
@@ -94,10 +95,10 @@ class Solution:
             else:
                 answer.append(str(i))
         return answer
+ ```
 
 
-
-Example 1:
+### Example:
 
 Input: n = 3
 Output: ["1","2","Fizz"]
@@ -108,6 +109,9 @@ Output: ["1","2","Fizz"]
 Given the head of a singly linked list, return the middle node of the linked list.
 
 If there are two middle nodes, return the second middle node.
+
+
+```python
 
  # Definition for singly-linked list.
 # class ListNode:
@@ -124,8 +128,9 @@ class Solution:
             fast = fast.next.next
         return slow
         
+```
 
-Example 1:
+### Example:
 
 
 Input: head = [1,2,3,4,5]
@@ -143,6 +148,7 @@ Given two strings ransomNote and magazine, return true if ransomNote can be cons
 
 Each letter in magazine can only be used once in ransomNote.
 
+```python
  class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         from collections import Counter
@@ -154,9 +160,9 @@ Each letter in magazine can only be used once in ransomNote.
             if magazine_counter[char] < count:
                 return False
         return True
-        
+ ```
 
-Example 1:
+### Example:
 
 Input: ransomNote = "a", magazine = "b"
 Output: false
