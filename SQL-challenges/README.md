@@ -29,8 +29,24 @@ where referee_id <> 2 or referee_id is null
 
 ```
 
+## Question 3: Big Countries
+
+A country is big if:
+
+it has an area of at least three million (i.e., 3000000 km2), or
+it has a population of at least twenty-five million (i.e., 25000000).
+Write a solution to find the name, population, and area of the big countries.
+
+<img width="427" alt="image" src="https://github.com/Masoumeh89/My-LeetCode-/assets/74910834/9f9814d3-1e88-447f-9488-8e69c4e8465d">
+
+```sql
+
+select name, population, area
+from World
+where area >= 3000000 or population >= 25000000
 
 
+```
 
 
 
