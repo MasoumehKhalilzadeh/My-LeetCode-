@@ -63,4 +63,22 @@ where author_id = viewer_id
 order by id asc;
 ```
 
+## Question 5: Replace Employee ID With The Unique Identifier
+
+Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null.
+
+Return the result table in any order.
+
+<img width="146" alt="image" src="https://github.com/user-attachments/assets/9a96ec19-3ba1-4fcc-a29b-f66ffd21e882">
+
+<img width="190" alt="image" src="https://github.com/user-attachments/assets/fe16d354-f70c-4c17-b12d-861ce12fe0b9">
+
+```sql
+select u.unique_id as unique_id, e.name as name      
+from Employees e
+left join EmployeeUNI u
+on e.id = u.id
+
+```
+
 
