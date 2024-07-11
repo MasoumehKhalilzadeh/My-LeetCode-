@@ -56,8 +56,11 @@ Return the result table sorted by id in ascending order.
 
 <img width="347" alt="image" src="https://github.com/user-attachments/assets/8e8261dc-b74b-4c44-8886-ec4cf06436e3">
 
-
-
-
+```sql
+select distinct author_id as id 
+from Views
+where author_id = viewer_id
+order by id asc;
+```
 
 
