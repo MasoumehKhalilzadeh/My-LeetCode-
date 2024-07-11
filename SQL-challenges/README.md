@@ -48,7 +48,13 @@ where area >= 3000000 or population >= 25000000
 
 ```
 
+## Question 4: Article Views I
 
+Write a solution to find all the authors that viewed at least one of their own articles.
+
+Return the result table sorted by id in ascending order.
+
+<img width="347" alt="image" src="https://github.com/user-attachments/assets/8e8261dc-b74b-4c44-8886-ec4cf06436e3">
 
 
 
