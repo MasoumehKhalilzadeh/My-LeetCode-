@@ -1,5 +1,7 @@
+## Select
 
-## Question 1: Recyclable and Low Fat Products
+
+### Question 1: Recyclable and Low Fat Products
 
 Write a solution to find the ids of products that are both low fat and recyclable.
 
@@ -16,7 +18,7 @@ where low_fats = 'Y' and recyclable = 'Y'
 
 
 
-## Question 2: Find Customer Referee
+### Question 2: Find Customer Referee
 
 Find the names of the customer that are not referred by the customer with id = 2.
 
@@ -29,7 +31,7 @@ where referee_id <> 2 or referee_id is null
 
 ```
 
-## Question 3: Big Countries
+### Question 3: Big Countries
 
 A country is big if:
 
@@ -48,7 +50,7 @@ where area >= 3000000 or population >= 25000000
 
 ```
 
-## Question 4: Article Views I
+### Question 4: Article Views I
 
 Write a solution to find all the authors that viewed at least one of their own articles.
 
@@ -63,7 +65,11 @@ where author_id = viewer_id
 order by id asc;
 ```
 
-## Question 5: Replace Employee ID With The Unique Identifier
+
+## Basic Joins
+
+
+### Question 5: Replace Employee ID With The Unique Identifier
 
 Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null.
 
@@ -80,5 +86,28 @@ left join EmployeeUNI u
 on e.id = u.id
 
 ```
+
+
+### Question 6: Product Sales Analysis I
+
+Write a solution to report the product_name, year, and price for each sale_id in the Sales table.
+
+
+<img width="356" alt="image" src="https://github.com/user-attachments/assets/12a89e7b-51a1-4423-90d3-f61a473dd108">
+
+
+<img width="228" alt="image" src="https://github.com/user-attachments/assets/717754e0-a775-45ed-8fa3-6d03bd033a7f">
+
+
+```sql
+
+select p.product_name, s.year, s.price
+from Sales s
+join Product p
+on s.product_id = p.product_id 
+
+```
+
+
 
 
