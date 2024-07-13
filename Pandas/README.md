@@ -17,3 +17,30 @@ def createDataframe(student_data: List[List[int]]) -> pd.DataFrame:
     return df
 
 ```
+
+
+## Data Inspection
+
+### Get the Size of a DataFrame
+
+Write a solution to calculate and display the number of rows and columns of players.
+
+Return the result as an array:
+
+[number of rows, number of columns]
+
+
+<img width="428" alt="image" src="https://github.com/user-attachments/assets/4756a8d4-95d8-43c3-9a0c-1f6645c106e8">
+
+```python
+import pandas as pd
+
+def getDataframeSize(players: pd.DataFrame) -> List[int]:
+    # Get the number of rows and columns
+    nrows = players.shape[0]
+    ncolumns = players.shape[1]
+
+    # Return as a list
+    return[nrows,ncolumns]
+
+```
