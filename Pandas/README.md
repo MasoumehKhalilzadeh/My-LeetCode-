@@ -44,3 +44,19 @@ def getDataframeSize(players: pd.DataFrame) -> List[int]:
     return[nrows,ncolumns]
 
 ```
+
+
+### Display the First Three Rows
+
+
+Write a solution to display the first 3 rows of this DataFrame.
+
+<img width="357" alt="image" src="https://github.com/user-attachments/assets/ded7690a-309c-4bb1-b96c-cefe3705479e">
+
+
+```python
+import pandas as pd
+
+def selectFirstRows(employees: pd.DataFrame) -> pd.DataFrame:
+    return employees.head(3)
+```
