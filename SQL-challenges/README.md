@@ -128,7 +128,20 @@ ORDER BY v.customer_id;
 ```
 
 
+### Question 8: Rising Temperature
 
+Write a solution to find all dates' Id with higher temperatures compared to its previous dates (yesterday).
+
+<img width="233" alt="image" src="https://github.com/user-attachments/assets/92a7ea8e-8fa7-4c2a-ba5a-0fc0aa2dd345">
+
+```sql
+select w1.id
+from Weather w1
+join Weather w2 
+on date_add(w2.recordDate, interval 1 day) = w1.recordDate
+where w1.temperature > w2.temperature;
+
+```
 
 
 
