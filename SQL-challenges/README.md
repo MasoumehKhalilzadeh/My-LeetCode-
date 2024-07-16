@@ -108,6 +108,27 @@ on s.product_id = p.product_id
 
 ```
 
+### Question 7: Customer Who Visited but Did Not Make Any Transactions
+
+
+Write a solution to find the IDs of the users who visited without making any transactions and the number of times they made these types of visits.
+
+<img width="248" alt="image" src="https://github.com/user-attachments/assets/762ee284-a04c-4bad-8a8f-12dce4572130">
+
+<img width="196" alt="image" src="https://github.com/user-attachments/assets/3960c52c-9738-448f-af41-e3b4f5cbeaae">
+
+```sql
+select v.customer_id as customer_id, count(v.visit_id) as count_no_trans 
+from Visits v
+left join Transactions t
+on v.visit_id = t.visit_id 
+where t.transaction_id is NULL
+GROUP BY v.customer_id
+ORDER BY v.customer_id;
+```
+
+
+
 
 
 
