@@ -60,3 +60,35 @@ import pandas as pd
 def selectFirstRows(employees: pd.DataFrame) -> pd.DataFrame:
     return employees.head(3)
 ```
+
+
+
+## Data Selecting
+
+### Select Data
+
+
+Write a solution to select the name and age of the student with student_id = 101.
+
+<img width="226" alt="image" src="https://github.com/user-attachments/assets/480b96b7-0b3f-4f97-9982-cf8bbdcd79da">
+
+```python
+
+import pandas as pd
+
+def selectData(students: pd.DataFrame) -> pd.DataFrame:
+
+    # Filter the DataFrame to get the student with student_id = 101
+    students = students[students["student_id"] == 101]
+
+    # Select the name and age columns
+    result = students[["name","age"]]
+
+    return result
+
+
+```
+
+
+
+
