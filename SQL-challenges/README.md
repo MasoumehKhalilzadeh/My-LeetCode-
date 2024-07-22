@@ -184,3 +184,104 @@ FROM MachineTimes;
 
 
 ```
+
+
+### Question 10: Employee Bonus
+
+Write a solution to report the name and bonus amount of each employee with a bonus less than 1000.
+
+<img width="239" alt="image" src="https://github.com/user-attachments/assets/74a895c4-555b-4c77-80dc-d110ed7348d0">
+
+
+```sql
+select e.name as name, b.bonus as bonus 
+from Employee e
+left join Bonus b
+on e.empId = b.empId 
+where b.bonus < 1000 or b.bonus is null
+
+```
+
+### Question 11:Students and Examinations
+
+Write a solution to find the number of times each student attended each exam.
+
+Return the result table ordered by student_id and subject_name.
+
+The result format is in the following example.
+
+<img width="194" alt="image" src="https://github.com/user-attachments/assets/e7597fde-ebda-469c-a730-f6f2e8c6774a">
+
+<img width="203" alt="image" src="https://github.com/user-attachments/assets/cf034bf7-38d8-42f6-a690-950dcd43da2c">
+
+<img width="324" alt="image" src="https://github.com/user-attachments/assets/85f14ba6-5ea6-4f45-82dd-30c5314de737">
+
+```sql
+SELECT 
+    s.student_id,
+    s.student_name,
+    sub.subject_name,
+    COUNT(e.subject_name) AS attended_exams
+FROM 
+    Students s
+CROSS JOIN 
+    Subjects sub
+LEFT JOIN 
+    Examinations e ON s.student_id = e.student_id AND sub.subject_name = e.subject_name
+GROUP BY 
+    s.student_id, s.student_name, sub.subject_name
+ORDER BY 
+    s.student_id, sub.subject_name;
+
+```
+
+
+### Question 12: Managers with at Least 5 Direct Reports
+
+id is the primary key (column with unique values) for this table.
+Each row of this table indicates the name of an employee, their department, and the id of their manager.
+If managerId is null, then the employee does not have a manager.
+No employee will be the manager of themself.
+ 
+
+Write a solution to find managers with at least five direct reports.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+<img width="209" alt="image" src="https://github.com/user-attachments/assets/6899c7c0-81a0-4633-a8cc-db90c34fc28e">
+
+```sql
+
+SELECT 
+    e1.name 
+FROM 
+    Employee e1
+WHERE 
+    e1.id IN (
+        SELECT 
+            e.managerId
+        FROM 
+            Employee e
+        WHERE 
+            e.managerId IS NOT NULL
+        GROUP BY 
+            e.managerId
+        HAVING 
+            COUNT(*) >= 5
+    );
+
+```
+
+Subquery:
+
+The subquery selects managerId from the Employee table, grouping by managerId and counting the number of employees (COUNT(*)). It includes only those managerId values where the count is 5 or more (HAVING COUNT(*) >= 5).
+Main Query:
+
+The main query selects the name from the Employee table where the id is in the list of managerId values returned by the subquery. This ensures we get the names of managers who have at least five direct reports.
+
+### Question 13: Confirmation Rate
+
+
+
