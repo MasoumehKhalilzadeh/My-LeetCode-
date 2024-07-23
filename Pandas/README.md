@@ -89,6 +89,111 @@ def selectData(students: pd.DataFrame) -> pd.DataFrame:
 
 ```
 
+### Create a New Column
+
+A company plans to provide its employees with a bonus.
+
+Write a solution to create a new column name bonus that contains the doubled values of the salary column.
+
+The result format is in the following example.
+
+<img width="202" alt="image" src="https://github.com/user-attachments/assets/7f4f901f-735b-4770-96b8-f6a4b2a87370">
+
+```python
+import pandas as pd
+
+def createBonusColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    employees["bonus"] = employees["salary"]*2
+    return employees
+
+```
+
+## Data Cleaning
+
+### Drop Duplicate Rows
+
+There are some duplicate rows in the DataFrame based on the email column.
+
+Write a solution to remove these duplicate rows and keep only the first occurrence.
+
+The result format is in the following example.
+
+<img width="302" alt="image" src="https://github.com/user-attachments/assets/d12d1a0f-8f20-4dc9-beb5-e0a28063b8c7">
+
+```python
+import pandas as pd
+
+def dropDuplicateEmails(customers: pd.DataFrame) -> pd.DataFrame:
+    customers = customers.drop_duplicates(subset = "email", keep = "first" )
+    return customers
+
+```
+
+
+### Drop Missing Data
+
+There are some rows having missing values in the name column.
+
+Write a solution to remove the rows with missing values.
+
+The result format is in the following example.
+
+<img width="227" alt="image" src="https://github.com/user-attachments/assets/33035959-76a8-494d-88da-452665b59669">
+
+```python
+
+import pandas as pd
+
+def dropMissingData(students: pd.DataFrame) -> pd.DataFrame:
+    students = students.dropna(subset = ["name"])
+    return students
+
+```
+
+### Modify Columns
+
+A company intends to give its employees a pay rise.
+
+Write a solution to modify the salary column by multiplying each salary by 2.
+
+The result format is in the following example.
+
+
+<img width="164" alt="image" src="https://github.com/user-attachments/assets/a5e9c896-2ec1-4e24-ab4f-b81413bc57ef">
+
+
+```python
+
+
+import pandas as pd
+
+def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    employees["salary"] = employees["salary"]*2
+    return employees
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
