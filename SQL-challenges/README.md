@@ -318,3 +318,63 @@ ON
 
 ```
 
+
+## Basic Aggregate Functions
+
+### Not Boring Movies
+
+Write a solution to report the movies with an odd-numbered ID and a description that is not "boring".
+
+Return the result table ordered by rating in descending order.
+
+The result format is in the following example.
+
+<img width="301" alt="image" src="https://github.com/user-attachments/assets/24890004-ba3d-44c0-b44b-0ebf955de2f3">
+
+```sql
+select id, movie, description, rating
+from Cinema
+where description != "boring" and id%2 = 1
+order by rating desc
+
+```
+
+###  Average Selling Price
+
+Write a solution to find the average selling price for each product. average_price should be rounded to 2 decimal places.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+<img width="327" alt="image" src="https://github.com/user-attachments/assets/a5409122-0e3d-4a13-91d3-f105ed331d23">
+
+<img width="185" alt="image" src="https://github.com/user-attachments/assets/6188d32b-3731-4c6f-ad43-7361949ae228">
+
+
+```sql
+
+SELECT p.product_id,
+IFNULL(ROUND(SUM(units*price)/SUM(units),2),0) AS average_price
+FROM Prices p 
+LEFT JOIN UnitsSold u
+ON p.product_id = u.product_id 
+AND u.purchase_date BETWEEN start_date AND end_date
+group by product_id
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
