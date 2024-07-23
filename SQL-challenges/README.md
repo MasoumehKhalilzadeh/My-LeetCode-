@@ -283,5 +283,38 @@ The main query selects the name from the Employee table where the id is in the l
 
 ### Question 13: Confirmation Rate
 
+The confirmation rate of a user is the number of 'confirmed' messages divided by the total number of requested confirmation messages. The confirmation rate of a user that did not request any confirmation messages is 0. Round the confirmation rate to two decimal places.
 
+Write a solution to find the confirmation rate of each user.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+<img width="296" alt="image" src="https://github.com/user-attachments/assets/c72dcb5a-400f-483b-a9e8-898062a8d12a">
+
+<img width="205" alt="image" src="https://github.com/user-attachments/assets/65f8128f-9517-4e9d-b6c7-52edb8217fc6">
+
+
+```sql
+WITH confirmation_counts AS (
+    SELECT 
+        user_id,
+        COUNT(*) AS total_confirmations,
+        COUNT(CASE WHEN action = 'confirmed' THEN 1 END) AS confirmed_count
+    FROM Confirmations
+    GROUP BY user_id
+)
+
+SELECT 
+    s.user_id,
+    IFNULL(ROUND(cc.confirmed_count / cc.total_confirmations, 2), 0.00) AS confirmation_rate
+FROM 
+    Signups s
+LEFT JOIN 
+    confirmation_counts cc
+ON 
+    s.user_id = cc.user_id;
+
+```
 
