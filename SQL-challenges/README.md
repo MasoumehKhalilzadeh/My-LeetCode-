@@ -364,16 +364,66 @@ group by product_id
 
 ```
 
+###  Average Selling Price
+
+Write an SQL query that reports the average experience years of all the employees for each project, rounded to 2 digits.
+
+Return the result table in any order.
+
+<img width="269" alt="image" src="https://github.com/user-attachments/assets/9d2206e8-e41e-4d79-bade-1a6b912e84bc">
+
+<img width="196" alt="image" src="https://github.com/user-attachments/assets/872568d5-3b48-4df1-9517-941e19151284">
+
+
+```sql
+
+select p.project_id, 
+ifnull(round(avg(e.experience_years),2),0) as average_years
+from Project p
+left join Employee e
+on p.employee_id = e.employee_id
+group by p.project_id
+
+```
+
+
+### Percentage of Users Attended a Contest
+
+Write a solution to find the percentage of the users registered in each contest rounded to two decimals.
+
+Return the result table ordered by percentage in descending order. In case of a tie, order it by contest_id in ascending order.
+
+<img width="145" alt="image" src="https://github.com/user-attachments/assets/d3f755b5-d53b-4617-bf17-c81d077a74a9">
+
+<img width="208" alt="image" src="https://github.com/user-attachments/assets/25dbfcad-29f7-47c7-98aa-f900ae33a35e">
+
+<img width="190" alt="image" src="https://github.com/user-attachments/assets/ce4d21a9-4fd7-4b48-9e94-bf8ec735336a">
 
 
 
+```sql
 
+with totalusers as (
+    select count(distinct user_id) as total_users
+    from Users
+),
 
+ContestRegistrations as (
+    select contest_id,
+    count(distinct user_id) as registered_users
+    from Register
+    group by contest_id
+)
 
+select cr.contest_id,
+round(100*cr.registered_users/tu.total_users, 2) as percentage
+from ContestRegistrations cr
+cross join totalusers tu
+ORDER BY 
+    percentage DESC, 
+    contest_id ASC;
 
-
-
-
+```
 
 
 
