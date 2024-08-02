@@ -425,6 +425,40 @@ ORDER BY
 
 ```
 
+## Queries Quality and Percentages 
+
+We define query quality as:
+
+The average of the ratio between query rating and its position.
+
+We also define poor query percentage as:
+
+The percentage of all queries with rating less than 3.
+
+Write a solution to find each query_name, the quality and poor_query_percentage.
+
+Both quality and poor_query_percentage should be rounded to 2 decimal places.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+<img width="386" alt="image" src="https://github.com/user-attachments/assets/9204d138-beee-4b0c-a214-ec20c16eef36">
+
+
+```sql
+
+select q.query_name,
+round((sum(q.rating/q.position))/count(query_name),2) as quality,
+round(avg(if(rating<3,1,0))*100,2) as poor_query_percentage
+
+from Queries q
+where q.query_name is not null
+group by  q.query_name
+
+```
+
+
 
 
 
