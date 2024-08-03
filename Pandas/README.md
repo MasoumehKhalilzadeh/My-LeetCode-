@@ -173,11 +173,33 @@ def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
 
 ```
 
+### Rename Columns
+
+Write a solution to rename the columns as follows:
+
+id to student_id
+first to first_name
+last to last_name
+age to age_in_years
+The result format is in the following example.
+
+<img width="361" alt="image" src="https://github.com/user-attachments/assets/e88776f8-bd8e-4071-81e8-3c34e23ebe38">
 
 
+```python
 
+import pandas as pd
 
+def renameColumns(students: pd.DataFrame) -> pd.DataFrame:
+    rename_columns = students.rename(columns={
+        'id':'student_id',
+        'first':'first_name',
+        'last':'last_name',
+        'age':'age_in_years'
+    })
 
+    return rename_columns
+```
 
 
 
