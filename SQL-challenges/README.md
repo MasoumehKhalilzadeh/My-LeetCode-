@@ -457,7 +457,33 @@ where q.query_name is not null
 group by  q.query_name
 
 ```
+## Monthly Transactions I
 
+Write an SQL query to find for each month and country, the number of transactions and their total amount, the number of approved transactions and their total amount.
+
+Return the result table in any order.
+
+The query result format is in the following example.
+
+ 
+<img width="581" alt="image" src="https://github.com/user-attachments/assets/25032c1c-9089-4167-9262-872c54c1e731">
+
+```sql
+SELECT 
+    DATE_FORMAT(trans_date, '%Y-%m') AS month,
+    country,
+    COUNT(*) AS trans_count,
+    SUM(CASE WHEN state = 'approved' THEN 1 ELSE 0 END) AS approved_count,
+    SUM(amount) AS trans_total_amount,
+    SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
+FROM 
+    Transactions
+GROUP BY 
+    DATE_FORMAT(trans_date, '%Y-%m'),
+    country;
+
+
+```
 
 
 
