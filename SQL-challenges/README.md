@@ -485,6 +485,114 @@ GROUP BY
 
 ```
 
+## Immediate Food Delivery II
+
+If the customer's preferred delivery date is the same as the order date, then the order is called immediate; otherwise, it is called scheduled.
+
+The first order of a customer is the order with the earliest order date that the customer made. It is guaranteed that a customer has precisely one first order.
+
+Write a solution to find the percentage of immediate orders in the first orders of all customers, rounded to 2 decimal places.
+
+The result format is in the following example.
+
+ <img width="434" alt="image" src="https://github.com/user-attachments/assets/eb0f5499-5a1a-4b35-851f-e3f73b901c3b">
+
+
+ ```sql
+WITH FirstOrders AS (
+    SELECT 
+        customer_id,
+        MIN(order_date) AS first_order_date
+    FROM 
+        Delivery
+    GROUP BY 
+        customer_id
+),
+FirstOrderDetails AS (
+    SELECT 
+        f.customer_id,
+        f.first_order_date,
+        d.customer_pref_delivery_date,
+        d.order_date
+    FROM 
+        FirstOrders f
+    JOIN 
+        Delivery d
+    ON 
+        f.customer_id = d.customer_id AND f.first_order_date = d.order_date
+)
+SELECT 
+    ROUND(
+        (SUM(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE 0 END) * 100.0) / COUNT(*), 
+        2
+    ) AS immediate_percentage
+FROM 
+    FirstOrderDetails;
+
+
+```
+
+
+## Game Play Analysis IV
+
+Write a solution to report the fraction of players that logged in again on the day after the day they first logged in, rounded to 2 decimal places. In other words, you need to count the number of players that logged in for at least two consecutive days starting from their first login date, then divide that number by the total number of players.
+
+The result format is in the following example.
+
+<img width="471" alt="image" src="https://github.com/user-attachments/assets/dbba4c94-7e0b-4381-8ff1-273b4ed9e547">
+
+```sql
+
+WITH FirstLogin AS (
+    SELECT 
+        player_id,
+        MIN(event_date) AS first_login_date
+    FROM 
+        Activity
+    GROUP BY 
+        player_id
+),
+NextDayLogin AS (
+    SELECT 
+        f.player_id,
+        f.first_login_date,
+        a.event_date AS next_day_login_date
+    FROM 
+        FirstLogin f
+    JOIN 
+        Activity a
+    ON 
+        f.player_id = a.player_id
+        AND a.event_date = DATE_ADD(f.first_login_date, INTERVAL 1 DAY)
+)
+SELECT 
+    ROUND(
+        COUNT(DISTINCT n.player_id) / COUNT(DISTINCT f.player_id), 
+        2
+    ) AS fraction
+FROM 
+    FirstLogin f
+LEFT JOIN 
+    NextDayLogin n
+ON 
+    f.player_id = n.player_id;
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
