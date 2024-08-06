@@ -201,6 +201,41 @@ def renameColumns(students: pd.DataFrame) -> pd.DataFrame:
     return rename_columns
 ```
 
+## Change Data Type
+
+Write a solution to correct the errors:
+
+The grade column is stored as floats, convert it to integers.
+
+The result format is in the following example.
+
+<img width="342" alt="image" src="https://github.com/user-attachments/assets/56fe7386-7861-421e-8662-9f7573c2f538">
+
+```python
+import pandas as pd
+
+def changeDatatype(students: pd.DataFrame) -> pd.DataFrame:
+    students['grade'] = students['grade'].astype(int)
+    return students
+
+```
+
+## Fill Missing Data
+
+Write a solution to fill in the missing value as 0 in the quantity column.
+
+The result format is in the following example.
+
+<img width="470" alt="image" src="https://github.com/user-attachments/assets/8cfdc2f0-c966-4009-b109-2f670a84736e">
+
+```python
+import pandas as pd
+
+def fillMissingValues(products: pd.DataFrame) -> pd.DataFrame:
+    products['quantity'] = products['quantity'].fillna(0)
+    return products
+
+```
 
 
 
