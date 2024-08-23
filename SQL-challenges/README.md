@@ -582,7 +582,39 @@ ON
 ```
 
 
+## Number of Unique Subjects Taught by Each Teacher
 
+Write a solution to calculate the number of unique subjects each teacher teaches in the university.
+
+Return the result table in any order.
+
+<img width="271" alt="image" src="https://github.com/user-attachments/assets/d993aaca-5cff-4b7a-a65e-86b6143cf708">
+
+```sql
+
+select teacher_id, count(distinct subject_id) as cnt 
+from Teacher
+group by teacher_id
+
+```
+
+
+## User Activity for the Past 30 Days I
+
+Write a solution to find the daily active user count for a period of 30 days ending 2019-07-27 inclusively. A user was active on someday if they made at least one activity on that day.
+
+Return the result table in any order.
+
+<img width="361" alt="image" src="https://github.com/user-attachments/assets/6e1ca9fc-73dd-42cd-9c6f-49eceb94db1f">
+
+
+```sql
+select activity_date as day, count(distinct user_id ) as active_users 
+from Activity 
+where activity_date BETWEEN '2019-06-28' AND '2019-07-27'
+group by activity_date;
+
+```
 
 
 
